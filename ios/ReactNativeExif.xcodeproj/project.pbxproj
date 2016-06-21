@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		327633601BFAAE28004DA88E /* Exif.m in Sources */ = {isa = PBXBuildFile; fileRef = 3276335D1BFAAE28004DA88E /* Exif.m */; };
+		327633601BFAAE28004DA88E /* ReactNativeExif.m in Sources */ = {isa = PBXBuildFile; fileRef = 3276335D1BFAAE28004DA88E /* ReactNativeExif.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -24,7 +24,8 @@
 
 /* Begin PBXFileReference section */
 		327633421BFAAD7E004DA88E /* libReactNativeExif.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libReactNativeExif.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		3276335D1BFAAE28004DA88E /* Exif.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Exif.m; sourceTree = "<group>"; };
+		3276335D1BFAAE28004DA88E /* ReactNativeExif.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReactNativeExif.m; sourceTree = "<group>"; };
+		93D3C9D61D1988810029CFEB /* ReactNativeExif.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ReactNativeExif.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,7 +58,8 @@
 		327633441BFAAD7E004DA88E /* ReactNativeExif */ = {
 			isa = PBXGroup;
 			children = (
-				3276335D1BFAAE28004DA88E /* Exif.m */,
+				3276335D1BFAAE28004DA88E /* ReactNativeExif.m */,
+				93D3C9D61D1988810029CFEB /* ReactNativeExif.h */,
 			);
 			path = ReactNativeExif;
 			sourceTree = "<group>";
@@ -88,7 +90,7 @@
 		3276333A1BFAAD7E004DA88E /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0640;
+				LastUpgradeCheck = 0730;
 				ORGANIZATIONNAME = remobile;
 				TargetAttributes = {
 					327633411BFAAD7E004DA88E = {
@@ -118,7 +120,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				327633601BFAAE28004DA88E /* Exif.m in Sources */,
+				327633601BFAAE28004DA88E /* ReactNativeExif.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -145,6 +147,7 @@
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -226,6 +229,7 @@
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				USER_HEADER_SEARCH_PATHS = "\"$(SRCROOT)/../../react-native/React/**\"";
 			};
 			name = Debug;
 		};
@@ -240,6 +244,7 @@
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				USER_HEADER_SEARCH_PATHS = "\"$(SRCROOT)/../../react-native/React/**\"";
 			};
 			name = Release;
 		};
