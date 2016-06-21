@@ -1,11 +1,8 @@
 package com.devialab.exif;
 
-import com.facebook.common.logging.FLog;
 import com.facebook.react.bridge.*;
 
 public class Exif extends ReactContextBaseJavaModule  {
-
-    private boolean isPaused;
 
     public Exif(ReactApplicationContext reactContext) {
         super(reactContext);
@@ -13,7 +10,7 @@ public class Exif extends ReactContextBaseJavaModule  {
 
     @Override
     public String getName() {
-        return "RCTExif";
+        return "ReactNativeExif";
     }
 
     @ReactMethod
