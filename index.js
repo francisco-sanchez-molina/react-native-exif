@@ -8,7 +8,7 @@ function unifyAndroid(exif){
 	var output = {} 
 
 	output.ImageWidth = parseInt(exif.ImageWidth)
-	output.ImageHeight = parseInt(exif.ImageHeight)
+	output.ImageHeight = parseInt(exif.ImageLength)
 	output.Orientation = parseInt(exif.Orientation)
 	return output
 }
