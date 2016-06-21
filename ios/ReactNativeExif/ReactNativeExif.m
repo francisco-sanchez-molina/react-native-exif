@@ -8,9 +8,9 @@
 RCT_EXPORT_MODULE(ReactNativeExif)
 
 RCT_EXPORT_METHOD(getExif:(NSString *)path resolver:(RCTPromiseResolveBlock)resolve
-                          rejecter:(RCTPromiseRejectBlock)reject)) {
+                          rejecter:(RCTPromiseRejectBlock)reject) {
   
-    resolve(@"test  ios")
+    resolve(@"test  ios");
   
 }
 
