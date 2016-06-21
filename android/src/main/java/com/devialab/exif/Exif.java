@@ -10,7 +10,6 @@ import com.facebook.react.bridge.Arguments;
 
 import com.facebook.react.bridge.WritableMap;
 
-
 public class Exif extends ReactContextBaseJavaModule  {
 
     private static final String[] EXIF_ATTRIBUTES = new String[] {
@@ -51,12 +50,12 @@ public class Exif extends ReactContextBaseJavaModule  {
     }
 
     @ReactMethod
-    public void getExif( String uri, Callback successCallback,  Callback errorCallback) throws Exception {
+    public void getExif( String uri, Promise promise) throws Exception {
         ExifInterface exif; 
         try { 
             exif = new ExifInterface(uri); 
         } catch (IOException e) { 
-            errorCallback.invoke(e.toString());
+            promise.reject(e.toString());
             return;
         } 
 
@@ -66,7 +65,7 @@ public class Exif extends ReactContextBaseJavaModule  {
             exifMap.putString(attribute, value);
         }
 
-        successCallback.invoke(exifMap);
+        promise.resolve(exifMap);
     }
 
 }

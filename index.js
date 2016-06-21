@@ -2,10 +2,9 @@ import { NativeModules } from 'react-native';
 
 var Exif = {}
 
-Exif.getExif = function (uri, success, error) {
+Exif.getExif = function (uri) {
   var path = uri.replace('file://', '')
-  NativeModules.ReactNativeExif.getExif(path, success, error)
-  return uri
+  return NativeModules.ReactNativeExif.getExif(path)
 }
 
 
