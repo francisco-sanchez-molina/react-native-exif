@@ -17,7 +17,20 @@ import Exif from 'react-native-exif'
 
 Exif.getExif('/sdcard/tt.jpg')
     .then(msg => console.warn('OK: ' + JSON.stringify(msg)))
-    .catch(meg => console.warn('ERROR: ' + msg))
+    .catch(msg => console.warn('ERROR: ' + msg))
+
+...
+
+Exif.getExif('content://media/external/images/media/111')
+    .then(msg => console.warn('OK: ' + JSON.stringify(msg)))
+    .catch(msg => console.warn('ERROR: ' + msg))
+
+...
+
+Exif.getExif('assets-library://asset/asset.JPG?id=xxxx&ext=JPG')
+    .then(msg => console.warn('OK: ' + JSON.stringify(msg)))
+    .catch(msg => console.warn('ERROR: ' + msg))
+
 ```
 ### Exif values
 
