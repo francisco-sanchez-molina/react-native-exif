@@ -1,6 +1,12 @@
 package com.devialab.exif;
 
+import android.database.Cursor;
+
 import android.media.ExifInterface; 
+
+import android.net.Uri;
+
+import android.provider.MediaStore;
 
 import com.facebook.react.bridge.*;
 
@@ -51,6 +57,15 @@ public class Exif extends ReactContextBaseJavaModule  {
 
     @ReactMethod
     public void getExif( String uri, Promise promise) throws Exception {
+        if(uri.startsWith("content://")) {
+          String [] proj = {MediaStore.Images.Media.DATA};
+          Cursor cursor = getReactApplicationContext().getContentResolver().query(Uri.parse(uri), proj,  null, null, null);
+          int column_index = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
+          cursor.moveToFirst();
+          uri = cursor.getString(column_index); 
+          cursor.close();
+        }
+
         ExifInterface exif; 
         try { 
             exif = new ExifInterface(uri); 
