@@ -21,12 +21,12 @@ RCT_EXPORT_METHOD(getExif:(NSString *)path resolver:(RCTPromiseResolveBlock)reso
             ALAssetsLibraryAssetForURLResultBlock resultblock = ^(ALAsset *myasset)
             {
                 
-                NSDictionary *myMetadata = (__bridge NSDictionary *)[[myasset defaultRepresentation] metadata];
+                NSDictionary *myMetadata = [[myasset defaultRepresentation] metadata];
                 resolve(myMetadata);
                 
             };
             
-            ALAssetsLibrary* assetslibrary = [[[ALAssetsLibrary alloc] init] autorelease];
+            ALAssetsLibrary* assetslibrary = [[ALAssetsLibrary alloc] init];
             NSURL *url = [NSURL URLWithString:[path stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
             [assetslibrary assetForURL:url
                            resultBlock:resultblock
