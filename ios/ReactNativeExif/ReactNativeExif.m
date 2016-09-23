@@ -22,9 +22,8 @@ RCT_EXPORT_METHOD(getExif:(NSString *)path resolver:(RCTPromiseResolveBlock)reso
             {
                 
                 NSDictionary *exif = [[myasset defaultRepresentation] metadata];
-                NSMutableDictionary *mutableExif = [NSMutableDictionary exif];
-
-                [mutableExif setValue:myasset.defaultRepresentation.url forKey:@"originalUri"];   
+                NSDictionary *mutableExif = [exif mutableCopy];
+                [mutableExif setValue:myasset.defaultRepresentation.filename forKey:@"originalUri"];   
                 resolve(mutableExif);
                 
             };
@@ -47,7 +46,7 @@ RCT_EXPORT_METHOD(getExif:(NSString *)path resolver:(RCTPromiseResolveBlock)reso
             {
                 NSDictionary *exif = (__bridge NSDictionary *)CGImageSourceCopyPropertiesAtIndex(mySourceRef,0,NULL);
                 
-                NSMutableDictionary *mutableExif = [NSMutableDictionary exif];
+                NSDictionary *mutableExif = [exif mutableCopy];
                 [mutableExif setValue:path forKey:@"originalUri"];   
                 resolve(mutableExif);
             }
