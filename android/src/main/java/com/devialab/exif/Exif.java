@@ -56,7 +56,7 @@ public class Exif extends ReactContextBaseJavaModule  {
     }
 
     @ReactMethod
-    public void getExif( String uri, Promise promise) throws Exception {
+    public void getExif(String uri, Promise promise) throws Exception {
         if(uri.startsWith("content://")) {
           String [] proj = {MediaStore.Images.Media.DATA};
           Cursor cursor = getReactApplicationContext().getContentResolver().query(Uri.parse(uri), proj,  null, null, null);
@@ -79,6 +79,8 @@ public class Exif extends ReactContextBaseJavaModule  {
             String value = exif.getAttribute(attribute);
             exifMap.putString(attribute, value);
         }
+
+        exifMap.putString("originalUri", uri);
 
         promise.resolve(exifMap);
     }
