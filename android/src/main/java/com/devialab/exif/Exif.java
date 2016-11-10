@@ -57,13 +57,18 @@ public class Exif extends ReactContextBaseJavaModule  {
 
     @ReactMethod
     public void getExif(String uri, Promise promise) throws Exception {
-        if(uri.startsWith("content://")) {
-          String [] proj = {MediaStore.Images.Media.DATA};
-          Cursor cursor = getReactApplicationContext().getContentResolver().query(Uri.parse(uri), proj,  null, null, null);
-          int column_index = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
-          cursor.moveToFirst();
-          uri = cursor.getString(column_index); 
-          cursor.close();
+        try { 
+            if(uri.startsWith("content://")) {
+                String [] proj = {MediaStore.Images.Media.DATA};
+                Cursor cursor = getReactApplicationContext().getContentResolver().query(Uri.parse(uri), proj,  null, null, null);
+                int column_index = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
+                cursor.moveToFirst();
+                uri = cursor.getString(column_index); 
+                cursor.close();
+            }
+        } catch (Exception e) { 
+            promise.reject(e.toString());
+            return;
         }
 
         ExifInterface exif; 
