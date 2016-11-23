@@ -22,6 +22,7 @@ function unifyIOS(exif) {
 	output.ImageHeight = exif.PixelHeight
 	output.Orientation = exif.Orientation
 	output.originalUri = exif.originalUri
+	output.exif = exif;
 	return output
 }
 
