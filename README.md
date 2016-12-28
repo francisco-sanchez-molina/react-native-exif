@@ -39,4 +39,6 @@ Value |
 ImageWidth |
 ImageHeight |
 Orientation |
+originalUri |
+exif|
 
