@@ -7,11 +7,11 @@ var Exif = {}
 function unifyAndroid(exif) {
 	var output = {}
 
-	output.ImageWidth = parseInt(exif.ImageWidth);
-	output.ImageHeight = parseInt(exif.ImageLength);
-	output.Orientation = parseInt(exif.Orientation);
-	output.originalUri = exif.originalUri;
-	output.exif = exif;
+	output.ImageWidth = parseInt(exif.ImageWidth)
+	output.ImageHeight = parseInt(exif.ImageLength)
+	output.Orientation = parseInt(exif.Orientation)
+	output.originalUri = exif.originalUri
+	output.exif = exif
 	return output
 }
 
@@ -22,7 +22,7 @@ function unifyIOS(exif) {
 	output.ImageHeight = exif.PixelHeight
 	output.Orientation = exif.Orientation
 	output.originalUri = exif.originalUri
-	output.exif = exif;
+	output.exif = exif
 	return output
 }
 
