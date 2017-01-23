@@ -1,7 +1,7 @@
 #import "ReactNativeExif.h"
-#import "RCTBridge.h"
-#import "RCTEventDispatcher.h"
-#import "RCTLog.h"
+#import <React/RCTBridge.h>
+#import <React/RCTEventDispatcher.h>
+#import <React/RCTLog.h>
 #import <AssetsLibrary/AssetsLibrary.h>
 
 @import Photos;

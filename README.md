@@ -42,3 +42,5 @@ Orientation |
 originalUri |
 exif|
 
+
+Version 0.1.0 add react-native 0.40 support
