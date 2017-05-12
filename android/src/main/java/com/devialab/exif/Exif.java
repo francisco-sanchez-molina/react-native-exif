@@ -74,7 +74,7 @@ public class Exif extends ReactContextBaseJavaModule  {
         ExifInterface exif; 
         try { 
             exif = new ExifInterface(uri); 
-        } catch (IOException e) { 
+        } catch (Exception e) { 
             promise.reject(e.toString());
             return;
         } 
