@@ -55,7 +55,8 @@ RCT_EXPORT_METHOD(getExif:(NSString *)path resolver:(RCTPromiseResolveBlock)reso
     }
     @catch (NSException *exception) {
         NSLog(@"%@", exception.reason);
-        NSError *error = [NSError errorWithDomain:@"world" code:200 userInfo:@"error"];
+        NSDictionary *userInfo = @{NSLocalizedDescriptionKey: exception.reason};
+        NSError *error = [NSError errorWithDomain:@"world" code:200 userInfo:userInfo];
         reject(@"fail", @"getExif", error);
     }
 
