@@ -3,6 +3,7 @@
 #import <React/RCTEventDispatcher.h>
 #import <React/RCTLog.h>
 #import <AssetsLibrary/AssetsLibrary.h>
+#import "NSDictionary+JSON.h"
 
 @import Photos;
 
@@ -21,7 +22,7 @@ RCT_EXPORT_METHOD(getExif:(NSString *)path resolver:(RCTPromiseResolveBlock)reso
             ALAssetsLibraryAssetForURLResultBlock resultblock = ^(ALAsset *myasset)
             {
                 
-                NSDictionary *exif = [[myasset defaultRepresentation] metadata];
+                NSDictionary *exif = [[[myasset defaultRepresentation] metadata] sanitizedDictionaryForJSONSerialization];
                 NSDictionary *mutableExif = [exif mutableCopy];
                 [mutableExif setValue:myasset.defaultRepresentation.filename forKey:@"originalUri"];   
                 resolve(mutableExif);
@@ -55,7 +56,8 @@ RCT_EXPORT_METHOD(getExif:(NSString *)path resolver:(RCTPromiseResolveBlock)reso
     }
     @catch (NSException *exception) {
         NSLog(@"%@", exception.reason);
-        NSError *error = [NSError errorWithDomain:@"world" code:200 userInfo:@"error"];
+        NSDictionary *userInfo = @{NSLocalizedDescriptionKey: exception.reason};
+        NSError *error = [NSError errorWithDomain:@"world" code:200 userInfo:userInfo];
         reject(@"fail", @"getExif", error);
     }
 

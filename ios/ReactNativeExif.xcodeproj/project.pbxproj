@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		09AAA3D31ECFA12C00B8ECD7 /* NSDictionary+JSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 09AAA3D21ECFA12C00B8ECD7 /* NSDictionary+JSON.m */; };
 		327633601BFAAE28004DA88E /* ReactNativeExif.m in Sources */ = {isa = PBXBuildFile; fileRef = 3276335D1BFAAE28004DA88E /* ReactNativeExif.m */; };
 /* End PBXBuildFile section */
 
@@ -23,6 +24,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		09AAA3D11ECFA12C00B8ECD7 /* NSDictionary+JSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+JSON.h"; sourceTree = "<group>"; };
+		09AAA3D21ECFA12C00B8ECD7 /* NSDictionary+JSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+JSON.m"; sourceTree = "<group>"; };
 		327633421BFAAD7E004DA88E /* libReactNativeExif.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libReactNativeExif.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		3276335D1BFAAE28004DA88E /* ReactNativeExif.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReactNativeExif.m; sourceTree = "<group>"; };
 		93D3C9D61D1988810029CFEB /* ReactNativeExif.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ReactNativeExif.h; sourceTree = "<group>"; };
@@ -60,6 +63,8 @@
 			children = (
 				3276335D1BFAAE28004DA88E /* ReactNativeExif.m */,
 				93D3C9D61D1988810029CFEB /* ReactNativeExif.h */,
+				09AAA3D11ECFA12C00B8ECD7 /* NSDictionary+JSON.h */,
+				09AAA3D21ECFA12C00B8ECD7 /* NSDictionary+JSON.m */,
 			);
 			path = ReactNativeExif;
 			sourceTree = "<group>";
@@ -120,6 +125,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				09AAA3D31ECFA12C00B8ECD7 /* NSDictionary+JSON.m in Sources */,
 				327633601BFAAE28004DA88E /* ReactNativeExif.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -223,7 +229,7 @@
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 					"$(SRCROOT)/../../react-native/React/**",
-					"$(SRCROOT)/../node_modules/react-native/React/**"
+					"$(SRCROOT)/../node_modules/react-native/React/**",
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
