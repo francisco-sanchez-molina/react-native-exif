@@ -1,19 +1,12 @@
 package com.devialab.exif;
 
 import android.database.Cursor;
-
-import android.media.ExifInterface; 
-
+import android.media.ExifInterface;
 import android.net.Uri;
-
 import android.provider.MediaStore;
-
 import com.facebook.react.bridge.*;
-
 import java.io.IOException;
-
 import com.facebook.react.bridge.Arguments;
-
 import com.facebook.react.bridge.WritableMap;
 
 public class Exif extends ReactContextBaseJavaModule  {
@@ -45,7 +38,7 @@ public class Exif extends ReactContextBaseJavaModule  {
         ExifInterface.TAG_SUBSEC_TIME_ORIG,
         ExifInterface.TAG_WHITE_BALANCE
     };
-    
+
     public Exif(ReactApplicationContext reactContext) {
         super(reactContext);
     }
@@ -56,38 +49,53 @@ public class Exif extends ReactContextBaseJavaModule  {
     }
 
     @ReactMethod
-    public void getExif(String uri, Promise promise) throws Exception {
-        try { 
-            if(uri.startsWith("content://")) {
-                String [] proj = {MediaStore.Images.Media.DATA};
-                Cursor cursor = getReactApplicationContext().getContentResolver().query(Uri.parse(uri), proj,  null, null, null);
-                int column_index = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
-                cursor.moveToFirst();
-                uri = cursor.getString(column_index); 
-                cursor.close();
+    public void getExif(String uri, Promise promise) {
+        try {
+            ExifInterface exif = createExifInterface(uri);
+
+            WritableMap exifMap = Arguments.createMap();
+            for (String attribute : EXIF_ATTRIBUTES) {
+                String value = exif.getAttribute(attribute);
+                exifMap.putString(attribute, value);
             }
-        } catch (Exception e) { 
+
+            exifMap.putString("originalUri", uri);
+
+            promise.resolve(exifMap);
+        } catch (Exception e) {
             promise.reject(e.toString());
-            return;
         }
-
-        ExifInterface exif; 
-        try { 
-            exif = new ExifInterface(uri); 
-        } catch (Exception e) { 
-            promise.reject(e.toString());
-            return;
-        } 
-
-        WritableMap exifMap = Arguments.createMap();
-        for (String attribute : EXIF_ATTRIBUTES) {
-            String value = exif.getAttribute(attribute);
-            exifMap.putString(attribute, value);
-        }
-
-        exifMap.putString("originalUri", uri);
-
-        promise.resolve(exifMap);
     }
 
+    @ReactMethod
+    public void getLatLong(String uri, Promise promise) {
+        try {
+            ExifInterface exif = createExifInterface(uri);
+
+            float[] latlng = new float[2];
+            exif.getLatLong(latlng);
+
+            WritableMap responseMap = Arguments.createMap();
+            responseMap.putDouble("latitude", latlng[0]);
+            responseMap.putDouble("longitude", latlng[1]);
+
+            promise.resolve(responseMap);
+        } catch (Exception e) {
+
+            promise.reject(e.toString());
+        }
+    }
+
+    private ExifInterface createExifInterface(String uri) throws Exception {
+        if (uri.startsWith("content://")) {
+            String [] proj = {MediaStore.Images.Media.DATA};
+            Cursor cursor = getReactApplicationContext().getContentResolver().query(Uri.parse(uri), proj,  null, null, null);
+            int column_index = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
+            cursor.moveToFirst();
+            uri = cursor.getString(column_index);
+            cursor.close();
+        }
+
+        return new ExifInterface(uri);
+    }
 }

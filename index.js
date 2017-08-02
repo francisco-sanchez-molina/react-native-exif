@@ -1,41 +1,48 @@
 import {
-	Platform,
-	NativeModules } from 'react-native';
+    Platform,
+    NativeModules,
+} from 'react-native';
 
-var Exif = {}
+const Exif = {};
 
 function unifyAndroid(exif) {
-	var output = {}
+    const output = {};
 
-	output.ImageWidth = parseInt(exif.ImageWidth)
-	output.ImageHeight = parseInt(exif.ImageLength)
-	output.Orientation = parseInt(exif.Orientation)
-	output.originalUri = exif.originalUri
-	output.exif = exif
-	return output
+    output.ImageWidth = parseInt(exif.ImageWidth);
+    output.ImageHeight = parseInt(exif.ImageLength);
+    output.Orientation = parseInt(exif.Orientation);
+    output.originalUri = exif.originalUri;
+    output.exif = exif;
+    return output;
 }
 
 function unifyIOS(exif) {
-	var output = {}
+    const output = {};
 
-	output.ImageWidth = exif.PixelWidth
-	output.ImageHeight = exif.PixelHeight
-	output.Orientation = exif.Orientation
-	output.originalUri = exif.originalUri
-	output.exif = exif
-	return output
+    output.ImageWidth = exif.PixelWidth;
+    output.ImageHeight = exif.PixelHeight;
+    output.Orientation = exif.Orientation;
+    output.originalUri = exif.originalUri;
+    output.exif = exif;
+    return output;
 }
 
 Exif.getExif = function (uri) {
-	var path = uri.replace('file://', '')
-	return NativeModules.ReactNativeExif.getExif(path).then(result => {
-		if (Platform.OS === 'android') {
-			return unifyAndroid(result)
-		} else {
-			return unifyIOS(result)
-		}
-	})
-}
+    const path = uri.replace('file://', '');
+    return NativeModules.ReactNativeExif.getExif(path).then(result => {
+        if (Platform.OS === 'android') {
+            return unifyAndroid(result);
+        }
+        return unifyIOS(result);
+    });
+};
 
+Exif.getLatLong = function (uri) {
+    const path = uri.replace('file://', '');
+    if (Platform.OS === 'android') {
+        return NativeModules.ReactNativeExif.getLatLong(path);
+    }
+    throw new Error('Not implemented for iOS.');
+};
 
-module.exports = Exif
+module.exports = Exif;
