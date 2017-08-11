@@ -39,10 +39,7 @@ Exif.getExif = function (uri) {
 
 Exif.getLatLong = function (uri) {
     const path = uri.replace('file://', '');
-    if (Platform.OS === 'android') {
-        return NativeModules.ReactNativeExif.getLatLong(path);
-    }
-    throw new Error('Not implemented for iOS.');
+    return NativeModules.ReactNativeExif.getLatLong(path);
 };
 
 module.exports = Exif;
