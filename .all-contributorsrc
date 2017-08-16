@@ -1,0 +1,20 @@
+{
+  "projectName": "react-native-exif",
+  "projectOwner": "psm1984",
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": true,
+  "contributors": [
+    {
+      "login": "francisco-sanchez-molina",
+      "name": "francisco-sanchez-molina",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/9049706?v=4",
+      "profile": "https://github.com/francisco-sanchez-molina",
+      "contributions": [
+        "code"
+      ]
+    }
+  ]
+}
