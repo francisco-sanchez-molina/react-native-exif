@@ -22,6 +22,15 @@
       "avatar_url": "https://avatars2.githubusercontent.com/u/11584712?v=4",
       "profile": "https://github.com/kesha-antonov",
       "contributions": []
+    },
+    {
+      "login": "ocollet",
+      "name": "Olivier Collet",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/95189?v=4",
+      "profile": "http://ocollet.com",
+      "contributions": [
+        "code"
+      ]
     }
   ]
 }
