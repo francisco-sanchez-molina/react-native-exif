@@ -1,0 +1,56 @@
+{
+  "projectName": "react-native-exif",
+  "projectOwner": "psm1984",
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": true,
+  "contributors": [
+    {
+      "login": "francisco-sanchez-molina",
+      "name": "francisco-sanchez-molina",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/9049706?v=4",
+      "profile": "https://github.com/francisco-sanchez-molina",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "kesha-antonov",
+      "name": "Kesha Antonov",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/11584712?v=4",
+      "profile": "https://github.com/kesha-antonov",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "ocollet",
+      "name": "Olivier Collet",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/95189?v=4",
+      "profile": "http://ocollet.com",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "hygkui",
+      "name": "hygkui",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/12526?v=4",
+      "profile": "https://github.com/hygkui",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "eurekao",
+      "name": "EurekaO",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/1276585?v=4",
+      "profile": "https://github.com/eurekao",
+      "contributions": [
+        "code"
+      ]
+    }
+  ]
+}
