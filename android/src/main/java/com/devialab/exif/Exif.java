@@ -9,6 +9,8 @@ import java.io.IOException;
 import com.facebook.react.bridge.Arguments;
 import com.facebook.react.bridge.WritableMap;
 
+import com.devialab.exif.utils.RealPathUtil;
+
 public class Exif extends ReactContextBaseJavaModule  {
 
     private static final String[] EXIF_ATTRIBUTES = new String[] {
@@ -88,12 +90,7 @@ public class Exif extends ReactContextBaseJavaModule  {
 
     private ExifInterface createExifInterface(String uri) throws Exception {
         if (uri.startsWith("content://")) {
-            String [] proj = {MediaStore.Images.Media.DATA};
-            Cursor cursor = getReactApplicationContext().getContentResolver().query(Uri.parse(uri), proj,  null, null, null);
-            int column_index = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
-            cursor.moveToFirst();
-            uri = cursor.getString(column_index);
-            cursor.close();
+            uri = RealPathUtil.getRealPathFromURI(getReactApplicationContext(), Uri.parse(uri));
         }
 
         return new ExifInterface(uri);
