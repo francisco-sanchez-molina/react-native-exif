@@ -44,7 +44,7 @@ Orientation |
 originalUri |
 exif|
 
-### getLatLong (Android only)
+### getLatLong
 
 Fetch geo coordinates as floats.
 
