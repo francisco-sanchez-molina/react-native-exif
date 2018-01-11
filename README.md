@@ -1,11 +1,14 @@
 # React Native Exif
-[![All Contributors](https://img.shields.io/badge/all_contributors-5-orange.svg?style=flat-square)](#contributors)
-An image exif reader
+[![All Contributors](https://img.shields.io/badge/all_contributors-5-orange.svg?style=flat-square)](#contributors) <br />
+>An image exif reader
 
 ## Installation
 ```sh
+yarn add react-native-exif
+```
+or
+```sh
 npm install react-native-exif --save
-rnpm link react-native-exif
 ```
 
 ## Usage
