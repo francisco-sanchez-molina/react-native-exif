@@ -46,6 +46,7 @@ RCT_EXPORT_METHOD(getExif:(NSString *)path resolver:(RCTPromiseResolveBlock)reso
             if (mySourceRef != NULL)
             {
                 NSDictionary *exif = (__bridge NSDictionary *)CGImageSourceCopyPropertiesAtIndex(mySourceRef,0,NULL);
+                CFRelease(mySourceRef);
 
                 NSDictionary *mutableExif = [exif mutableCopy];
                 [mutableExif setValue:path forKey:@"originalUri"];
@@ -102,6 +103,7 @@ RCT_EXPORT_METHOD(getLatLong:(NSString *)path resolver:(RCTPromiseResolveBlock)r
       if (mySourceRef != NULL)
       {
           NSDictionary *exif = (__bridge NSDictionary *)CGImageSourceCopyPropertiesAtIndex(mySourceRef,0,NULL);
+          CFRelease(mySourceRef);
           NSDictionary *location = [exif objectForKey:(NSString *)kCGImagePropertyGPSDictionary];
 
           if (! location) {
