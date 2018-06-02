@@ -39,13 +39,13 @@ RCT_EXPORT_METHOD(getExif:(NSString *)path resolver:(RCTPromiseResolveBlock)reso
 
         } else {
 
-            UIImage * myImage = [UIImage imageWithContentsOfFile: path];
-            NSData* pngData =  UIImageJPEGRepresentation(myImage, 1.0);
+            NSData* pngData = [NSData dataWithContentsOfFile:path];
 
             CGImageSourceRef mySourceRef = CGImageSourceCreateWithData((CFDataRef)pngData, NULL);
             if (mySourceRef != NULL)
             {
                 NSDictionary *exif = (__bridge NSDictionary *)CGImageSourceCopyPropertiesAtIndex(mySourceRef,0,NULL);
+                CFRelease(mySourceRef);
 
                 NSDictionary *mutableExif = [exif mutableCopy];
                 [mutableExif setValue:path forKey:@"originalUri"];
@@ -95,13 +95,13 @@ RCT_EXPORT_METHOD(getLatLong:(NSString *)path resolver:(RCTPromiseResolveBlock)r
                     }];
 
     } else {
-      UIImage * myImage = [UIImage imageWithContentsOfFile: path];
-      NSData* pngData = UIImageJPEGRepresentation(myImage, 1.0);
+      NSData* pngData = [NSData dataWithContentsOfFile:path];
 
       CGImageSourceRef mySourceRef = CGImageSourceCreateWithData((CFDataRef)pngData, NULL);
       if (mySourceRef != NULL)
       {
           NSDictionary *exif = (__bridge NSDictionary *)CGImageSourceCopyPropertiesAtIndex(mySourceRef,0,NULL);
+          CFRelease(mySourceRef);
           NSDictionary *location = [exif objectForKey:(NSString *)kCGImagePropertyGPSDictionary];
 
           if (! location) {
