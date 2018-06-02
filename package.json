@@ -1,6 +1,6 @@
 {
     "name": "react-native-exif",
-    "version": "0.2.0",
+    "version": "0.3.0",
     "description": "Exif reader for react-native support for ios and android",
     "main": "index.js",
     "author": {
