@@ -110,6 +110,15 @@ RCT_EXPORT_METHOD(getLatLong:(NSString *)path resolver:(RCTPromiseResolveBlock)r
 
           NSNumber *latitude = [location objectForKey:@"Latitude"];
           NSNumber *longitude = [location objectForKey:@"Longitude"];
+          NSString *latitudeRef = [location objectForKey:@"LatitudeRef"];
+          NSString *longitudeRef = [location objectForKey:@"LongitudeRef"];
+          
+          if ([@"S" isEqualToString:latitudeRef]) {
+              latitude = @(- latitude.doubleValue);
+          }
+          if ([@"W" isEqualToString:longitudeRef]) {
+              longitude = @(- longitude.doubleValue);
+          }
 
           NSMutableDictionary *latLongDict = [[NSMutableDictionary alloc] init];
           [latLongDict setValue:latitude forKey:@"latitude"];
