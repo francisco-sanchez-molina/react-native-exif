@@ -37,6 +37,15 @@ Exif.getExif = function (uri) {
     });
 };
 
+Exif.getExifWithLocalIdentifier = function (localIdentifier) {
+    return NativeModules.ReactNativeExif.getExifWithLocalIdentifier(localIdentifier).then(result => {
+        if (Platform.OS === 'android') {
+            return unifyAndroid(result);
+        }
+        return unifyIOS(result);
+    });
+};
+
 Exif.getLatLong = function (uri) {
     const path = uri.replace('file://', '');
     return NativeModules.ReactNativeExif.getLatLong(path);
