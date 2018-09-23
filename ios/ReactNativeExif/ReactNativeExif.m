@@ -127,4 +127,40 @@ RCT_EXPORT_METHOD(getLatLong:(NSString *)path resolver:(RCTPromiseResolveBlock)r
   }
 }
 
+RCT_EXPORT_METHOD(getExifWithLocalIdentifier:(NSString *)localIdentifier resolver:(RCTPromiseResolveBlock)resolve
+                  rejecter:(RCTPromiseRejectBlock)reject) {
+
+    @try {
+
+        PHFetchResult* assets = [PHAsset fetchAssetsWithLocalIdentifiers:@[localIdentifier] options:nil];
+        PHAsset *asset = assets.firstObject;
+        if (asset.mediaType != PHAssetMediaTypeImage) {
+            [NSException raise:@"Asset is not an image" format:@"Asset for provided local identifier %@* is not an image", localIdentifier];
+            return;
+        }
+
+        [[PHImageManager defaultManager] requestImageDataForAsset:asset options:nil resultHandler:^(NSData * _Nullable imageData, NSString * _Nullable dataUTI, UIImageOrientation orientation, NSDictionary * _Nullable info) {
+            CGImageSourceRef mySourceRef = CGImageSourceCreateWithData((CFDataRef)imageData, NULL);
+
+            if (mySourceRef == NULL) {
+                [NSException raise:@"Could not load image" format:@"The image could not be loaded"];
+            }
+            NSDictionary *exif = (__bridge NSDictionary *)CGImageSourceCopyPropertiesAtIndex(mySourceRef,0,NULL);
+            CFRelease(mySourceRef);
+
+            NSDictionary *mutableExif = [exif mutableCopy];
+            [mutableExif setValue:localIdentifier forKey:@"originalUri"];
+            resolve(mutableExif);
+        }];
+
+    }
+    @catch (NSException *exception) {
+        NSLog(@"%@", exception.reason);
+        NSDictionary *userInfo = @{NSLocalizedDescriptionKey: exception.reason};
+        NSError *error = [NSError errorWithDomain:@"world" code:200 userInfo:userInfo];
+        reject(@"fail", @"getExifWithLocalIdentifier", error);
+    }
+
+}
+
 @end
