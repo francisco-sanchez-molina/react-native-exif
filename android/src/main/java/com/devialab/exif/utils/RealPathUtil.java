@@ -9,9 +9,9 @@ import android.os.Build;
 import android.os.Environment;
 import android.provider.DocumentsContract;
 import android.provider.MediaStore;
-import androidX.support.annotation.NonNull;
-import androidX.support.annotation.Nullable;
-import androidX.support.v4.content.FileProvider;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.core.content.FileProvider;
 
 import java.io.File;
 
