@@ -35,10 +35,28 @@ public class Exif extends ReactContextBaseJavaModule  {
         ExifInterface.TAG_MAKE,
         ExifInterface.TAG_MODEL,
         ExifInterface.TAG_ORIENTATION,
+        ExifInterface.TAG_X_RESOLUTION,
+        ExifInterface.TAG_Y_RESOLUTION,
         ExifInterface.TAG_SUBSEC_TIME,
         ExifInterface.TAG_SUBSEC_TIME_DIG,
         ExifInterface.TAG_SUBSEC_TIME_ORIG,
-        ExifInterface.TAG_WHITE_BALANCE
+        ExifInterface.TAG_WHITE_BALANCE,
+        ExifInterface.TAG_BITS_PER_SAMPLE,
+        ExifInterface.TAG_COMPRESSED_BITS_PER_PIXEL,
+        ExifInterface.TAG_COLOR_SPACE,
+        ExifInterface.TAG_FLASH,
+        ExifInterface.TAG_SOFTWARE,
+        ExifInterface.TAG_Y_CB_CR_POSITIONING,
+        ExifInterface.TAG_RESOLUTION_UNIT,
+        ExifInterface.TAG_EXPOSURE_PROGRAM,
+        ExifInterface.TAG_EXIF_VERSION,
+        ExifInterface.TAG_EXPOSURE_BIAS_VALUE,
+        ExifInterface.TAG_MAX_APERTURE_VALUE,
+        ExifInterface.TAG_METERING_MODE,
+        ExifInterface.TAG_INTEROPERABILITY_INDEX,
+        ExifInterface.TAG_MAKER_NOTE,
+        ExifInterface.TAG_BITS_PER_SAMPLE,
+        ExifInterface.TAG_SHUTTER_SPEED_VALUE
     };
 
     public Exif(ReactApplicationContext reactContext) {
